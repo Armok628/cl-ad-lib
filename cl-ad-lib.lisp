@@ -8,7 +8,7 @@
     ([name] "Markus" "Donald Trump" "Squirt" "Socrates" "John McCarthy" "Patrick Volkerding")
     ([adjective] "magnificent" "disgusting" "happy" "tired" "cute" "strong" "weak" "big" "small" "ridiculous")
     ([adverb] "bravely" "foolishly" "quickly" "accidentally" "regularly" "finally" "barely" "sometimes" "often" "vigorously")
-    ([preposition] "in" "on" "around" "through" "by" "over" "under" "about" "into" "near")
+    ([preposition] "in" "on" "around" "through" "by" "over" "under" "about" "into" "near" "at")
     ([conjunction] "for" "and" "but" "or" "yet" "so")
     ([article] "a" "the")))
 
