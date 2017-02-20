@@ -8,8 +8,8 @@
     ([name] "Markus" "Donald Trump" "Squirt" "Socrates" "John McCarthy" "Patrick Volkerding")
     ([adjective] "magnificent" "disgusting" "happy" "tired" "cute" "strong" "weak" "big" "small" "ridiculous")
     ([adverb] "bravely" "foolishly" "quickly" "accidentally" "regularly" "finally" "barely" "sometimes" "often" "vigorously")
-    ([preposition] "in" "on" "around" "through" "by" "over" "under" "about")
-    ([conjunction] "for" "and" "nor" "but" "or" "yet" "so")
+    ([preposition] "in" "on" "around" "through" "by" "over" "under" "about" "into")
+    ([conjunction] "for" "and" "but" "or" "yet" "so")
     ([article] "a" "the")))
 
 (defun random-element (x)
@@ -44,19 +44,22 @@
     (loop until (one-in 4) do (setf struct (concatenate 'list struct '([adjective]))))
     (setf struct (concatenate 'list struct (if name '([name]) '([noun]))))))
 
+(defun prepositional-phrase ()
+  (concatenate 'list '([preposition]) (noun-phrase)))
+
 (defun verb-phrase (&optional (transitive (one-in 2)))
   (let ((struct nil))
     (loop until (one-in 4) do (setf struct (concatenate 'list struct '([adverb]))))
     (setf struct (concatenate 'list struct (if transitive
-					     (concatenate 'list '([transitive-verb]) (noun-phrase))
-					     '([intransitive-verb]))))))
-
-(defun prepositional-phrase ()
-  (concatenate 'list '([preposition]) (noun-phrase)))
+					     (concatenate 'list '([transitive-verb])
+							  (when (one-in 2) '([preposition]))
+							  (noun-phrase))
+					     (concatenate 'list '([intransitive-verb])
+							  (when (one-in 2) (prepositional-phrase))))))))
 
 (defun sentence-structure (&optional (struct nil))
   (concatenate 'list struct
 	       (noun-phrase)
 	       (verb-phrase (one-in 2))
-	       (if (one-in 2) (prepositional-phrase) nil)
+	       (when (one-in 2) (prepositional-phrase))
 	       (if (one-in 2) (concatenate 'list '([conjunction]) (sentence-structure)))))
