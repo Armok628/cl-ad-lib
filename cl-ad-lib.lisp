@@ -9,7 +9,7 @@
     ([adjective] "magnificent" "disgusting" "happy" "tired" "cute" "strong" "weak" "big" "small" "ridiculous")
     ([adverb] "bravely" "foolishly" "quickly" "accidentally" "regularly" "finally" "barely" "sometimes" "often" "vigorously")
     ([preposition] "in" "on" "around" "through" "by" "over" "under" "about" "into" "near" "with")
-    ([conjunction] "for" "and" "but" "or" "yet" "so" "that")
+    ([conjunction] "for" "and" "but" "or" "yet" "so" "that" "as")
     ([article] "a" "the")))
 
 (defparameter *kids-vocabulary*
